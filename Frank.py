@@ -20,12 +20,14 @@ opts = {
              }
         }
  
+ 
 # Функции | Functions
 def speak(what):
     print( what )
     speak_engine.say( what )
     speak_engine.runAndWait()
     speak_engine.stop()
+ 
  
 def callback(recognizer, audio):
     try:
@@ -51,6 +53,7 @@ def callback(recognizer, audio):
     except sr.RequestError as e:
         print("[log] Связь прервана! Пожалуйста проверьте ваш интернет!")
  
+ 
 def recognize_cmd(cmd):
     RC = {'cmd': '', 'percent': 0}
     for c,v in opts['cmds'].items():
@@ -63,18 +66,20 @@ def recognize_cmd(cmd):
     
     return RC
  
+ 
 def execute_cmd(cmd):
     if cmd == 'ctime':
         # Cказать текущее время | Tell the current time 
         now = datetime.datetime.now()
-        speak("Сейчас " + str(now.hour) + ":" + str(now.minute))
+ 
+ speak("Сейчас " + str(now.hour) + ":" + str(now.minute))
         #stop_listening = r.listen_in_background(m, callback)
         #while True: time.sleep(0.1) # infinity loop
     
     elif cmd == 'radio':
         # Воспроизвести радио | Turn on music
-        os.system("G:\\music\\Taksist_Rusik_-_Gde_spasibo_Despacito_Parodiya_Sover_(iPleer.fm).mp3")
-        #os.system("Disk:\\folder\\folder\\musik.mp3")
+        os.system("Укажите путь где храниться музыка")
+        # Пример: os.system("Disk:\\folder\\folder\\musik.mp3")
     
     elif cmd == 'stupid1':
         # Not understanding words | Не понимаюющие слова
@@ -83,9 +88,9 @@ def execute_cmd(cmd):
         while True: time.sleep(0.01) # infinity loop
 
     elif cmd == 'info':
-        speak("Меня зовут Френк. Для друзей просто Кеша")
+        speak("Меня зовут Френк")
         speak("Я умею помогать, разговаривать свами")
-        speak("Подробно вы можете прочитать обо мне на оффициальном портале")
+        speak("Подробно вы можете узнать у моего хозяина")        
 
     elif cmd == 'talk':
         speak("Привет, как поживает мой господин?")
